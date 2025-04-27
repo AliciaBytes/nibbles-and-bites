@@ -1,0 +1,25 @@
+{
+    "name": "nibbles-and-bites",
+    "description": "A composable and accessible component framework",
+    "version": "0.1.0",
+    "homepage": "https://github.com/AliciaBytes/nibbles-and-bites#readme",
+    "type": "module",
+    "exports": {
+        ".": "./index.js",
+        "./astro": "./MyAstroComponent.astro",
+        "./react": "./MyReactComponent.jsx"
+    },
+    "files": [
+        "index.js",
+        "MyAstroComponent.astro",
+        "MyReactComponent.jsx"
+    ],
+    "keywords": [
+        "astro",
+        "withastro",
+        "astro-component",
+        "...",
+        "..."
+    ],
+    "license": "(Apache-2.0 OR MIT)"
+}
