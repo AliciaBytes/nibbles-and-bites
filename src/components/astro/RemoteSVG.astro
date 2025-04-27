@@ -13,7 +13,7 @@ const svg = await fetch(src);
 <div set:html={svg} {...props} />
 
 <style>
-  @layer component {
+  @layer nb.component {
     div,
     div :global(svg) {
       max-width: 100%;

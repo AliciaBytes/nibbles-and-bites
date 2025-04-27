@@ -1,0 +1,13 @@
+/*
+https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
+https://web.dev/articles/accessible-tap-targets
+*/
+
+@layer nb.accessibility {
+  @media (pointer: coarse) {
+    .tap-target {
+      min-width: 44px;
+      min-height: 44px;
+    }
+  }
+}

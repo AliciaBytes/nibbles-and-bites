@@ -1,0 +1,50 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import InfoSVG from "../../assets/info_circle.svg";
+
+interface Props extends HTMLAttributes<"aside"> {
+  color?: string;
+  highlightColor?: string;
+  backgroundColor?: string;
+}
+
+const {
+  color,
+  highlightColor = "var(--color-sky)",
+  backgroundColor,
+} = Astro.props;
+---
+
+<aside>
+  <p>
+    <InfoSVG class="aside-icon" />
+    Information
+  </p>
+  <div>
+    <slot />
+  </div>
+</aside>
+
+<style define:vars={{ color, highlightColor, backgroundColor }}>
+  @layer nb.component {
+    p {
+      display: inline-flex;
+      gap: 3px;
+      align-items: center;
+    }
+    .aside-icon {
+      height: 1.5em;
+      width: 1.5em;
+    }
+    aside {
+      color: var(--color);
+      background-color: var(
+        --backgroundColor,
+        oklch(from var(--highlightColor) calc(l * 0.33) c h)
+      );
+      border-left: 6px solid var(--highlightColor);
+      padding: 9px 0px;
+      padding-left: 18px;
+    }
+  }
+</style>
