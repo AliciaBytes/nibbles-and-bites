@@ -1,0 +1,22 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  src: string;
+}
+
+const { src, ...props } = Astro.props;
+
+const svg = await fetch(src);
+---
+
+<div set:html={svg} {...props} />
+
+<style>
+  @layer component {
+    div,
+    div :global(svg) {
+      max-width: 100%;
+    }
+  }
+</style>
