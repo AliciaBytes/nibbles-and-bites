@@ -1,0 +1,10 @@
+---
+import { InlineSpoiler as SolidInlineSpoiler } from "../solid/InlineSpoiler.tsx";
+const { content_note, ...props } = Astro.props;
+---
+
+<!-- htmlmin:ignore -->
+<SolidInlineSpoiler client:load {content_note} {...props}
+  ><slot /></SolidInlineSpoiler
+>
+<!-- htmlmin:ignore -->
