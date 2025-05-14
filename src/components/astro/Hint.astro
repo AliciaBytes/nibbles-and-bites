@@ -1,6 +1,6 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import InfoSVG from "../../assets/info_circle.svg";
+import InfoSVG from "../../assets/lightbulb.svg";
 
 interface Props extends HTMLAttributes<"aside"> {
   backgroundColor?: string;
@@ -12,8 +12,8 @@ interface Props extends HTMLAttributes<"aside"> {
 const {
   backgroundColor,
   color,
-  highlightColor = "var(--color-sky)",
-  title = "Information",
+  highlightColor = "var(--color-lavender)",
+  title = "Hint",
 } = Astro.props;
 ---
 
