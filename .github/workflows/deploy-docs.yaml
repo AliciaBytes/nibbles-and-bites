@@ -1,0 +1,53 @@
+name: deploy-docs
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+
+env:
+  DOMAIN: nibbles-and-bites.polycule.li
+
+jobs:
+  deploy-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      statuses: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - name: Setup IndexNow
+      # Generate files dynamically to prevent them from being leaked in public repositories.
+      # This example will put the file in the root directory of the site.You may change the location by yourself.
+        run: echo ${{ secrets.INDEXNOW_KEY }} > public/${{ secrets.INDEXNOW_KEY }}.txt
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "lts/*"
+          cache: "npm"
+      - name: Switch to the docs directory
+        run: cd docs
+      - name: Install Dependencies
+        run: npm install --workspace=docs
+      - name: Build the website
+        run: npm run build --workspace=docs
+      - name: Deploy to Cloudflare pages
+        uses: cloudflare/wrangler-action@da0e0dfe58b7a431659754fdf3f186c529afbe65 # v3
+        with:
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          command: pages deploy docs/dist --project-name=nibbles-and-bites
+        timeout-minutes: 5
+      - name: Submit sitemap to google
+        run: curl -X GET https://www.google.com/ping?sitemap=https://${{ env.DOMAIN }}/sitemap-index.xml
+      - name: Send urls to indexnow
+        uses: bojieyang/indexnow-action@cd6d1576582c1839b80dd71f418f172aa40d6552 # v2
+        with:
+          sitemap-location: "https://${{ env.DOMAIN }}/sitemap-index.xml"
+          key: ${{ secrets.INDEXNOW_KEY }}
+          endpoint: "api.indexnow.org"
+          timeout: 50000
+          limit: 1000
+          failure-strategy: "error"
+          lastmod-required: false

@@ -1,0 +1,27 @@
+{
+  "name": "nibbles-and-bites.polycule.li",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.2.6",
+    "@astrojs/sitemap": "^3.4.0",
+    "@astrojs/solid-js": "^5.0.10",
+    "astro": "^5.7.13",
+    "astro-compress": "^2.3.8",
+    "astro-expressive-code": "^0.41.2",
+    "astro-meta-tags": "^0.3.2",
+    "astro-pagefind": "^1.8.3",
+    "astro-seo": "^0.8.4",
+    "browserslist": "^4.24.5",
+    "lightningcss": "^1.30.1",
+    "nibbles-and-bites": "^0.1.3",
+    "sanitize.css": "^13.0.0",
+    "solid-js": "^1.9.7"
+  }
+}

@@ -1,0 +1,98 @@
+---
+import Search from "astro-pagefind/components/Search";
+
+import {
+  Navigation,
+  ThemeSwitcher,
+  ThemeToggle,
+} from "nibbles-and-bites/astro";
+
+const { class: className } = Astro.props;
+
+const navigation = [
+  { slug: "/", title: "Home" },
+  { slug: "/functionality-overview", title: "Functionality Overview" },
+];
+---
+
+<header class={className}>
+  <div id="top_bar">
+    <a id="home_link" href="/">
+      <span id="title_text">Nibbles & Bites</span>
+    </a>
+    <ThemeToggle />
+  </div>
+  <ThemeSwitcher />
+  <div id="pagefind-search-ui">
+    <Search uiOptions={{ showImages: false, resetStyles: false }} />
+  </div>
+  <Navigation navigation={navigation} />
+</header>
+
+<style>
+  @layer component {
+    @media print {
+      header {
+        display: none;
+      }
+    }
+    header {
+      margin-top: 18px;
+      container-type: inline-size;
+    }
+
+    div {
+      display: grid;
+      grid-template-columns: 1fr auto;
+    }
+
+    #home_link {
+      display: grid;
+      place-content: center;
+      grid-template-columns: auto auto;
+      gap: 6px;
+    }
+
+    #top_bar {
+      --top-bar-size: 60px;
+      display: inline flex;
+      font-size: var(--size-font-header1);
+      line-height: var(--top-bar-size);
+      height: var(--top-bar-size);
+      justify-content: space-between;
+    }
+
+    #top_bar * {
+      height: var(--top-bar-size);
+      margin: 0;
+      padding: 0;
+    }
+
+    #pagefind-search-ui {
+      margin: 12px 0 0 0;
+    }
+
+    #pagefind-search-ui :global(*) {
+      background-color: var(--color-base) !important;
+      border-color: var(--color-overlay0) !important;
+      color: var(--color-text) !important;
+      border-radius: 0% !important;
+      border-width: 1px !important;
+    }
+
+    #pagefind-search-ui :global(*::placeholder) {
+      color: var(--color-overlay0) !important;
+      opacity: 1 !important;
+    }
+
+    #pagefind-search-ui :global(form::before) {
+      background-color: var(--color-overlay0) !important;
+    }
+
+    @container (max-width: 540px) {
+      #title_text {
+        display: none;
+      }
+    }
+  }
+</style>

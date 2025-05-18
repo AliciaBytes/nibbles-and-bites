@@ -1,2 +1,8 @@
 node_modules
 *.tgz
+
+dist
+
+**/public/*icon*
+**/public/*.png
+**/public/*.svg
