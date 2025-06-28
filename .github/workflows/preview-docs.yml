@@ -1,0 +1,39 @@
+name: preview-docs
+on:
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - 'docs/**'
+jobs:
+  preview-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "lts/*"
+          cache: "npm"
+      - name: Install Dependencies
+        run: npm install --workspace=docs
+      - name: Build the website
+        run: npm run build --workspace=docs
+      - name: Deploy to Cloudflare pages
+        id: deploy
+        uses: cloudflare/wrangler-action@da0e0dfe58b7a431659754fdf3f186c529afbe65 # v3
+        with:
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          command: pages deploy docs/dist --project-name=nibbles-and-bites
+        timeout-minutes: 5
+      - name: Print the preview URLs
+        uses: mshick/add-pr-comment@b8f338c590a895d50bcbfa6c5859251edc8952fc # v2
+        with:
+          message: |
+            ## Preview URLs
+
+            Deployment URL: ${{ steps.deploy.outputs.deployment-url }}
+            Deployment alias URL: ${{ steps.deploy.outputs.deployment-alias-url }}

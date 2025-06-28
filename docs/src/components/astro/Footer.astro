@@ -1,0 +1,24 @@
+---
+import { SectionDivider } from "nibbles-and-bites/astro";
+
+const { class: className, title, url } = Astro.props;
+const reportURL = encodeURI(
+  `https://github.com/AliciaBytes/aliciabytes.com/issues/new?template=broken-page.yml&title=Broken page: ${title}&url=${url}`
+);
+---
+
+<footer class={className} id="footer">
+  <SectionDivider />
+  <p>
+    Made with 💜 by <a href="https://www.aliciabytes.com/">AliciaBytes</a>
+  </p>
+</footer>
+
+<style>
+  @layer component {
+    p {
+      padding: 18px 0;
+      text-align: center;
+    }
+  }
+</style>

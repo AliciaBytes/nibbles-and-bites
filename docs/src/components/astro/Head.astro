@@ -1,0 +1,46 @@
+---
+interface Props {
+  description?: string;
+  title: string;
+  metaTitle?: string;
+}
+
+import { SEO } from "astro-seo";
+
+let { description, title, metaTitle } = Astro.props;
+if (!metaTitle && title.length < 3 && !title.includes("Nibbles & Bites")) {
+  metaTitle = `${title} - Nibbles & Bites`;
+}
+description ??= "A component system for members of polycule.li";
+const url = Astro.url;
+---
+
+<head>
+  <SEO
+    title={metaTitle || title}
+    description={description}
+    charset="utf-8"
+    extend={{
+      meta: [
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "fediverse:creator", content: "@AliciaBytes@polycule.li" },
+        { name: "robots", content: "noai, noimageai" },
+        { name: "generator", content: Astro.generator },
+        {
+          name: "theme-color",
+          content: "#1a202c",
+          media: "(prefers-color-scheme: dark)",
+        },
+        {
+          name: "theme-color",
+          content: "#FFF",
+          media: "(prefers-color-scheme: light)",
+        },
+      ],
+    }}
+  />
+  <script>
+    document.documentElement.classList.remove("no-js");
+    document.documentElement.classList.add("js");
+  </script>
+</head>
