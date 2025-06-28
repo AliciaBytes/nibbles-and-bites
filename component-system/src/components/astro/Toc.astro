@@ -1,0 +1,30 @@
+---
+import generateTocStructure from "../../util/generateTocStructure";
+import type { MarkdownHeading } from "astro";
+import TocLevel from "./TocLevel.astro";
+export interface Props {
+  headings: MarkdownHeading[];
+}
+
+let { headings } = Astro.props;
+const toc = generateTocStructure(
+  headings.filter((heading) => heading.depth > 1 && heading.depth < 4)
+)!;
+
+const hasToc = toc && toc.length !== 0;
+---
+
+{
+  hasToc && (
+    <details>
+      <summary>Table of Contents</summary>
+      <TocLevel items={toc} />
+    </details>
+  )
+}
+
+<style>
+  li {
+    list-style-type: none;
+  }
+</style>
