@@ -1,7 +1,7 @@
 {
   "name": "nibbles-and-bites",
   "description": "A composable and accessible component framework",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "homepage": "https://nibbles-and-bites.polycule.li",
   "repository": "AliciaBytes/nibbles-and-bites",
   "type": "module",
