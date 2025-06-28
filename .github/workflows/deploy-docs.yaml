@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - 'docs/**'
+      - '.github/**'
 
 env:
   DOMAIN: nibbles-and-bites.polycule.li
@@ -21,13 +22,13 @@ jobs:
       - name: Setup IndexNow
       # Generate files dynamically to prevent them from being leaked in public repositories.
       # This example will put the file in the root directory of the site.You may change the location by yourself.
-        run: echo ${{ secrets.INDEXNOW_KEY }} > public/${{ secrets.INDEXNOW_KEY }}.txt
+        run: |
+          mkdir docs/public
+          echo ${{ secrets.INDEXNOW_KEY }} > docs/public/${{ secrets.INDEXNOW_KEY }}.txt
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: "lts/*"
           cache: "npm"
-      - name: Switch to the docs directory
-        run: cd docs
       - name: Install Dependencies
         run: npm install --workspace=docs
       - name: Build the website
