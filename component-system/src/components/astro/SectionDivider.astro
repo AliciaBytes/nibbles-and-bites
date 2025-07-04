@@ -1,8 +1,8 @@
 ---
-
+let { class: className } = Astro.props;
 ---
 
-<hr />
+<hr class={className} />
 
 <style>
   @layer nb.component {
