@@ -24,7 +24,7 @@
   ],
   "license": "(Apache-2.0 OR MIT)",
   "devDependencies": {
-    "astro": "^5.13.1",
+    "astro": "^5.14.3",
     "solid-js": "^1.9.5"
   },
   "peerDependencies": {
