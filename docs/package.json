@@ -17,7 +17,7 @@
     "astro-expressive-code": "^0.41.2",
     "astro-meta-tags": "^0.4.0",
     "astro-pagefind": "^1.8.3",
-    "astro-seo": "^0.8.4",
+    "astro-seo": "^1.0.0",
     "browserslist": "^4.24.5",
     "lightningcss": "^1.30.1",
     "nibbles-and-bites": "^0.1.4",
