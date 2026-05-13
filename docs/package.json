@@ -16,7 +16,7 @@
     "astro-compress": "^2.3.8",
     "astro-expressive-code": "^0.41.2",
     "astro-meta-tags": "^0.4.0",
-    "astro-pagefind": "^1.8.3",
+    "astro-pagefind": "^2.0.0",
     "astro-seo": "^1.0.0",
     "browserslist": "^4.24.5",
     "lightningcss": "^1.30.1",
