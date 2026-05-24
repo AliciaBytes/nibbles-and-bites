@@ -1,5 +1,5 @@
 ---
-import Search from "astro-pagefind/components/Search";
+import Search from "astro-pagefind/components/Search.astro";
 
 import {
   Navigation,
@@ -30,6 +30,9 @@ const navigation = [
 </header>
 
 <style>
+  :root {
+
+  }
   @layer component {
     @media print {
       header {
@@ -70,6 +73,7 @@ const navigation = [
 
     #pagefind-search-ui {
       margin: 12px 0 0 0;
+      --pf-searchbox-max-width: 100%;
     }
 
     #pagefind-search-ui :global(*) {

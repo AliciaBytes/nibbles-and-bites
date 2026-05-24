@@ -1,7 +1,7 @@
 {
   "name": "nibbles-and-bites",
   "description": "A composable and accessible component framework",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "homepage": "https://nibbles-and-bites.polycule.li",
   "repository": "AliciaBytes/nibbles-and-bites",
   "type": "module",
@@ -24,11 +24,11 @@
   ],
   "license": "(Apache-2.0 OR MIT)",
   "devDependencies": {
-    "astro": "^6.0.0",
-    "solid-js": "^1.9.5"
+    "astro": "^6.3.7",
+    "solid-js": "^1.9.13"
   },
   "peerDependencies": {
-    "astro": "^6.0.0",
-    "solid-js": "^1.9.5"
+    "astro": "^6.3.7",
+    "solid-js": "^1.9.13"
   }
 }
