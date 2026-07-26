@@ -20,7 +20,7 @@
     "astro-seo": "^1.1.0",
     "browserslist": "^4.28.2",
     "lightningcss": "^1.32.0",
-    "nibbles-and-bites": "^0.2.0",
+    "nibbles-and-bites": "^0.2.1",
     "sanitize.css": "^13.0.0",
     "solid-js": "^1.9.13"
   }
