@@ -30,5 +30,3 @@ jobs:
           files: |
             nibbles-and-bites-*.tgz
       - run: npm publish --provenance --access public --workspace=component-system
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
