@@ -17,12 +17,11 @@ jobs:
         with:
           node-version: 'lts/*'
           registry-url: 'https://registry.npmjs.org'
+          check-latest: true
       - run: cd component-system
       - run: npm ci --workspace=component-system
       - run: npm pack --workspace=component-system
       - run: npm publish --provenance --dry-run --access public --workspace=component-system
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Release
         uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2
         with:
@@ -30,5 +29,3 @@ jobs:
           files: |
             nibbles-and-bites-*.tgz
       - run: npm publish --provenance --access public --workspace=component-system
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
