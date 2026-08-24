@@ -16,7 +16,11 @@ jobs:
           node-version: "lts/*"
           cache: "npm"
       - name: Install Dependencies
-        run: npm install --workspace=docs
+        run: npm install
+      - name: Verify local component-system is used
+        run: |
+          test -L node_modules/nibbles-and-bites
+          test "$(realpath node_modules/nibbles-and-bites)" = "$(realpath component-system)"
       - name: Build the website
         run: npm run build --workspace=docs
       - name: Deploy to Cloudflare pages
