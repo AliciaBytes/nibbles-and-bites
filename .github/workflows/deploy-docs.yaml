@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'docs/**'
-      - '.github/**'
 
 env:
   DOMAIN: nibbles-and-bites.polycule.li

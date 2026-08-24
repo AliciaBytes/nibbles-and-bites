@@ -3,8 +3,6 @@ on:
   push:
     branches-ignore:
       - main
-    paths:
-      - 'docs/**'
 jobs:
   preview-docs:
     runs-on: ubuntu-latest
