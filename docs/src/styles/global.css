@@ -1,22 +1,4 @@
-@import "@catppuccin/starlight/styles/shared.css" layer(catppuccin);
-@import "@catppuccin/starlight/themes/catppuccin-mocha-mauve.css" layer(catppuccin);
-@import "@catppuccin/starlight/themes/catppuccin-latte-mauve.css" layer(catppuccin);
-
 @layer defaults {
-    :where(:root) {
-        --size-font-normal: 1rem;
-        --size-font-header1: 1.75rem;
-        --size-font-header2: 1.6rem;
-        --size-font-header3: 1.45rem;
-        --size-font-subtext0: 0.9rem;
-    }
-
-    html {
-        color: var(--sl-color-text);
-        background-color: var(--sl-color-black);
-        font-size: 18px;
-    }
-
     h1,
     h2,
     h3,
@@ -26,82 +8,9 @@
         text-wrap: balance;
     }
 
-    h1 {
-        font-size: var(--size-font-header1);
-        margin: 12px 0;
-    }
-
-    h2 {
-        font-size: var(--size-font-header2);
-        margin: 9px 0;
-    }
-
-    h3 {
-        font-size: var(--size-font-header3);
-        margin: 6px 0;
-    }
-
-    p {
-        margin: 9px 0;
-    }
-
-    ol,
-    ul {
-        padding-inline-start: 20px;
-    }
-
-    li {
-        margin: 9px 0;
-    }
-
-    blockquote,
-    ol,
-    ul {
-        margin: 0;
-    }
-
-    hr {
-        width: 100%;
-        color: var(--sl-color-gray-3);
-    }
-
-    blockquote {
-        border-left: 1px solid var(--sl-color-gray-3);
-        padding-inline-start: 20px;
-    }
-
-    :where(.grid-center-wrapper) {
-        display: grid;
-        grid-template-columns: 1fr min(120ch, 100% - 48px) 1fr;
-        column-gap: 24px;
-    }
-
-    :where(.grid-center-wrapper > *) {
-        grid-column: 2;
-    }
-
-    a {
-        color: var(--sl-color-blue);
-        text-underline-offset: 0.1em;
-    }
-
-    a:visited {
-        color: var(--sl-color-purple);
-    }
-
-    a:hover,
-    a:focus {
-        color: var(--sl-color-accent);
-        text-underline-offset: 0.2em;
-    }
-
-    pre > code {
-        display: grid;
-    }
-
     .kroki-inline-svg,
     .kroki-inline-svg > svg {
-        color: black;
+        color: var(--sl-color-black);
         max-width: 100%;
     }
 }

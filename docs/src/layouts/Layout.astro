@@ -6,33 +6,32 @@ export interface Props {
   headings?: { depth: number; slug: string; text: string }[];
 }
 
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+
 import Head from "@src/components/astro/Head.astro";
 import Header from "@src/components/astro/Header.astro";
 import Footer from "@src/components/astro/Footer.astro";
 
-import "@styles/external.css";
-import "@styles/global.css";
-import "nibbles-and-bites/css/layers.css";
-import "nibbles-and-bites/css/theme.css";
-import "nibbles-and-bites/css/accessibility.css";
-import { Toc } from "nibbles-and-bites/astro";
+import "virtual:starlight/user-css";
 
 const { title, description, metaTitle, headings } = Astro.props;
+console.log(JSON.stringify(headings));
 const url = Astro.url;
 ---
 
+
 <!doctype html>
-<html lang="en" class="no-js" data-theme="dark">
+<StarlightPage frontmatter={{title: title}} hasSidebar={false} headings={headings as any} >
   <Head title={title} description={description} metaTitle={metaTitle} />
   <body>
-    <Header class="grid-center-wrapper" />
     <main class="grid-center-wrapper" data-pagefind-body>
-      {headings && <Toc headings={headings} />}
-      <slot />
+      <div class="sl-markdown-content">
+        <slot />
+      </div>
     </main>
     <Footer class="grid-center-wrapper such-a-bottom" {title} {url} />
   </body>
-</html>
+</StarlightPage>
 
 <style>
   :where(body) {

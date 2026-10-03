@@ -59,7 +59,7 @@ const navigation = [
     #top_bar {
       --top-bar-size: 60px;
       display: inline flex;
-      font-size: var(--size-font-header1);
+      font-size: var(--sl-text-h1, var(--sl-text-4xl, 2.1875rem));
       line-height: var(--top-bar-size);
       height: var(--top-bar-size);
       justify-content: space-between;
@@ -77,10 +77,10 @@ const navigation = [
     }
 
     #pagefind-search-ui :global(*) {
-      background-color: var(--sl-color-black) !important;
+      background-color: var(--sl-color-bg, var(--sl-color-black)) !important;
       border-color: var(--sl-color-gray-4) !important;
       color: var(--sl-color-text) !important;
-      border-radius: 0% !important;
+      border-radius: 0 !important;
       border-width: 1px !important;
     }
 

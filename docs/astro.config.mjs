@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
+import starlight from "@astrojs/starlight";
+import catppuccin from "@catppuccin/starlight";
 import solidJs from '@astrojs/solid-js';
 import mdx from "@astrojs/mdx";
 import pagefind from "astro-pagefind";
@@ -22,22 +24,27 @@ export default defineConfig({
     ],
   },
   integrations: [
-    solidJs(),
-    expressiveCode(
-      {
-        themeCssSelector: (theme) =>
-          theme.name === "catppuccin-latte"
-            ? ":root[data-theme='light']"
-            : ":root[data-theme='dark']",
+    starlight({
+      title: "Nibbles & Bites",
+      description:
+        "A composable and accessible component framework for polycule.li.",
+      sidebar: [
+        { label: "Home", link: "/" },
+        { label: "Functionality Overview", link: "/functionality-overview/" },
+      ],
+      pagefind: false,
+      plugins: [
+        catppuccin({
+          dark: { flavor: "mocha", accent: "mauve" },
+          light: { flavor: "latte", accent: "mauve" },
+        })
+      ],
+      expressiveCode: {
         themes: ["catppuccin-mocha", "catppuccin-latte"],
-        useStyleReset: false,
-        useThemedSelectionColors: true,
-        styleOverrides: {
-          borderColor: ({ theme }) => theme.colors['titleBar.activeBackground'],
-        }
-      }
-    ),
-    mdx(),
+        useStarlightUiThemeColors: true,
+      },
+    }),
+    solidJs(),
     sitemap(),
     pagefind(),
     astroMetaTags(),
@@ -63,11 +70,7 @@ export default defineConfig({
       SVG: false,
     }),
   ],
-  markdown: {
-    remarkPlugins: [],
-    rehypePlugins: [],
-    syntaxHighlight: false,
-  },
+
   vite: {
     build: {
       assetsInlineLimit: 0,
