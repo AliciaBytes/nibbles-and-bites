@@ -6,3 +6,6 @@ dist
 **/public/*icon*
 **/public/*.png
 **/public/*.svg
+
+# Ingnore .astro files.
+.astro
