@@ -6,6 +6,7 @@ interface Props {
 }
 
 import { SEO } from "astro-seo";
+import layerOrderHref from "@styles/layers.css?url";
 
 let { description, title, metaTitle } = Astro.props;
 if (!metaTitle && title.length < 3 && !title.includes("Nibbles & Bites")) {
@@ -16,6 +17,7 @@ const url = Astro.url;
 ---
 
 <head>
+  <link rel="stylesheet" href={layerOrderHref} />
   <SEO
     title={metaTitle || title}
     description={description}

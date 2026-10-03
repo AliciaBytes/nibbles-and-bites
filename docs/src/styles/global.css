@@ -1,6 +1,6 @@
-@import "@catppuccin/starlight/styles/shared.css";
-@import "@catppuccin/starlight/themes/catppuccin-mocha-mauve.css";
-@import "@catppuccin/starlight/themes/catppuccin-latte-mauve.css";
+@import "@catppuccin/starlight/styles/shared.css" layer(catppuccin);
+@import "@catppuccin/starlight/themes/catppuccin-mocha-mauve.css" layer(catppuccin);
+@import "@catppuccin/starlight/themes/catppuccin-latte-mauve.css" layer(catppuccin);
 
 @layer defaults {
     :where(:root) {
