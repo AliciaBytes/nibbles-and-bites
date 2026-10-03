@@ -25,13 +25,11 @@ export default defineConfig({
     solidJs(),
     expressiveCode(
       {
-        themeCssSelector: (theme, context) => `[data-selected-theme="${theme.name}"]`,
-        themes: [
-          "catppuccin-frappe",
-          "catppuccin-latte",
-          "catppuccin-macchiato",
-          "catppuccin-mocha"
-        ],
+        themeCssSelector: (theme) =>
+          theme.name === "catppuccin-latte"
+            ? ":root[data-theme='light']"
+            : ":root[data-theme='dark']",
+        themes: ["catppuccin-mocha", "catppuccin-latte"],
         useStyleReset: false,
         useThemedSelectionColors: true,
         styleOverrides: {

@@ -3,34 +3,30 @@
 ---
 
 <div id="theme-switcher" data-visible="false">
-  <button class="tap-target" aria-pressed="false" data-theme="catppuccin-latte"
+  <button class="tap-target" aria-pressed="false" data-theme="light"
     >Latte</button
   >
-  <button class="tap-target" aria-pressed="false" data-theme="catppuccin-frappe"
-    >Frappé</button
-  >
-  <button
-    class="tap-target"
-    aria-pressed="false"
-    data-theme="catppuccin-macchiato">Macchiato</button
-  >
-  <button class="tap-target" aria-pressed="false" data-theme="catppuccin-mocha"
+  <button class="tap-target" aria-pressed="false" data-theme="dark"
     >Mocha</button
   >
 </div>
 
 <script>
-  const screenMediaQuerry = window.matchMedia("screen");
-  const applyTheme = (theme: string) => {
-    if (!screenMediaQuerry.matches) {
-      theme = "catppuccin-latte";
-    }
-    const target = document.querySelector(`[data-theme="${theme}"]`);
+  const screenMediaQuery = window.matchMedia("screen");
+  const themes = ["light", "dark"];
 
-    document.documentElement.setAttribute("data-selected-theme", theme);
+  const applyTheme = (theme: string) => {
+    if (!screenMediaQuery.matches) {
+      theme = "light";
+    }
+
+    const target = document.querySelector(
+      `#theme-switcher button[data-theme="${theme}"]`
+    );
+    document.documentElement.setAttribute("data-theme", theme);
 
     document
-      .querySelector('[data-theme][aria-pressed="true"]')
+      .querySelector('#theme-switcher [data-theme][aria-pressed="true"]')
       ?.setAttribute("aria-pressed", "false");
 
     target?.setAttribute("aria-pressed", "true");
@@ -38,59 +34,32 @@
 
   const handleThemeSelection = (event: Event) => {
     const target = event.currentTarget as HTMLButtonElement;
-    const isPressed = target.getAttribute("aria-pressed");
-
-    /* if clicked theme is different from current theme */
-    if (isPressed !== "true") {
+    if (target.getAttribute("aria-pressed") !== "true") {
       const theme = target.getAttribute("data-theme");
-      applyTheme(theme);
-      localStorage.setItem("selected-theme", theme);
+      if (theme && themes.includes(theme)) {
+        applyTheme(theme);
+        localStorage.setItem("selected-theme", theme);
+      }
     }
   };
 
-  const handleMediaChannge = (mq: MediaQueryList) => {
-    if (!mq.matches) {
-      return applyTheme("catpuccin-latte");
-    }
-
-    let savedTheme = localStorage.getItem("selected-theme");
-    if (
-      savedTheme === null ||
-      ![
-        "catppuccin-latte",
-        "catppuccin-frappe",
-        "catppuccin-macchiato",
-        "catppuccin-mocha",
-      ].includes(savedTheme)
-    ) {
-      savedTheme = "catppuccin-mocha";
-    }
-
-    applyTheme(savedTheme);
+  const applySavedTheme = () => {
+    const savedTheme = localStorage.getItem("selected-theme");
+    const theme =
+      savedTheme === "light" || savedTheme === "catppuccin-latte"
+        ? "light"
+        : "dark";
+    applyTheme(theme);
   };
 
-  let savedTheme = localStorage.getItem("selected-theme");
-  if (
-    savedTheme === null ||
-    ![
-      "catppuccin-latte",
-      "catppuccin-frappe",
-      "catppuccin-macchiato",
-      "catppuccin-mocha",
-    ].includes(savedTheme)
-  ) {
-    savedTheme = "catppuccin-mocha";
-  }
-
-  applyTheme(savedTheme);
+  applySavedTheme();
 
   const themeSwitcher = document.querySelector("#theme-switcher");
-  const buttons = themeSwitcher?.querySelectorAll("button");
-
-  buttons?.forEach((button) => {
+  themeSwitcher?.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", handleThemeSelection);
   });
-  screenMediaQuerry.addEventListener("change", handleMediaChannge, {
+
+  screenMediaQuery.addEventListener("change", applySavedTheme, {
     passive: true,
   });
 </script>
@@ -110,12 +79,12 @@
     }
 
     button {
-      border-color: var(--color-overlay0);
+      border-color: var(--sl-color-gray-4);
     }
 
     button[aria-pressed="true"] {
-      background: var(--color-text);
-      color: var(--color-base);
+      background: var(--sl-color-accent);
+      color: var(--sl-color-black);
     }
   }
 </style>

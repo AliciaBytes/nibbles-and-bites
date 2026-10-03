@@ -5,7 +5,7 @@
 
   .inline_spoiler * {
     display: inline;
-    background-color: var(--color-surface0);
+    background-color: var(--sl-color-gray-5);
   }
 
   .spoiler_text[aria-hidden="true"] {

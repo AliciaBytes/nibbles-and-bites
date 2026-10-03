@@ -8,5 +8,5 @@ The component framework is dual licensed under the [MIT License](LICENSE-MIT) or
 
 ## Gratitude
 
-- [Catppuccin](https://catppuccin.com) is the color scheme used in the included theme.
+- [Catppuccin](https://catppuccin.com) provides the palette for the documentation site's [Starlight theme](https://github.com/catppuccin/starlight).
 - [System UIcons](https://www.systemuicons.com) for the amazing icons.

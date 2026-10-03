@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@catppuccin/starlight": "^2.1.0",
     "@astrojs/mdx": "^7.0.3",
     "@astrojs/sitemap": "^3.7.2",
     "@astrojs/solid-js": "^7.0.1",
